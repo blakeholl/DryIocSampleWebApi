@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace DryIocSampleWebApi
+namespace DryIocSampleWebApi.Domain
 {
-    public class ProductRepository
+    public class FakeProductRepository : IProductRepository
     {
         private readonly IList<Product> _products = new List<Product>
         {
@@ -11,7 +11,7 @@ namespace DryIocSampleWebApi
             new Product {Id = 2, Name = "Candy"}
         };
 
-        public IEnumerable<Product> List()
+        public IEnumerable<Product> GetAll()
         {
             return _products;
         }
@@ -20,11 +20,5 @@ namespace DryIocSampleWebApi
         {
             return _products.FirstOrDefault(p => p.Id == id);
         }
-    }
-
-    public class Product
-    {
-        public int Id { get; set; }
-        public string Name { get; set; }
     }
 }

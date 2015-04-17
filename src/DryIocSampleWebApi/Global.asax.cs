@@ -1,55 +1,34 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+using System.Diagnostics;
 using System.Web;
 using System.Web.Http;
-using System.Web.Security;
-using System.Web.SessionState;
 using DryIoc;
 using DryIoc.WebApi;
+using DryIocSampleWebApi.Controllers;
+using DryIocSampleWebApi.Domain;
+
+using Reuse = DryIoc.Reuse;
+using WebReuse = DryIoc.WebApi.Reuse;
 
 namespace DryIocSampleWebApi
 {
-    public class Global : System.Web.HttpApplication
+    public class Global : HttpApplication
     {
-
         protected void Application_Start(object sender, EventArgs e)
         {
             WebApiConfig.Register(GlobalConfiguration.Configuration);
 
-            var container = new Container();
-            container.Register<ProductRepository>();
+            IContainer container = new Container();
+
+            container.Register<IProductRepository, FakeProductRepository>(WebReuse.InRequest);
+
+            container.RegisterDelegate<ILogger>(
+                resolver => new Logger(s => Debug.WriteLine(s)),
+                Reuse.Singleton);
+
+            container.Register<ProductsController>(WebReuse.InRequest);
+
             container.WithWebApi(GlobalConfiguration.Configuration);
-        }
-
-        protected void Session_Start(object sender, EventArgs e)
-        {
-
-        }
-
-        protected void Application_BeginRequest(object sender, EventArgs e)
-        {
-
-        }
-
-        protected void Application_AuthenticateRequest(object sender, EventArgs e)
-        {
-
-        }
-
-        protected void Application_Error(object sender, EventArgs e)
-        {
-
-        }
-
-        protected void Session_End(object sender, EventArgs e)
-        {
-
-        }
-
-        protected void Application_End(object sender, EventArgs e)
-        {
-
         }
     }
 }
