@@ -38,12 +38,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DryIoc, Version=2.0.0.252, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\DryIoc.dll.2.0.0-preview252\lib\net45\DryIoc.dll</HintPath>
+    <Reference Include="DryIoc">
+      <HintPath>..\packages\DryIoc.dll.2.0.0-preview256\lib\net45\DryIoc.dll</HintPath>
     </Reference>
     <Reference Include="DryIoc.WebApi">
-      <HintPath>..\packages\DryIoc.WebApi.dll.2.0.0-preview252\lib\net45\DryIoc.WebApi.dll</HintPath>
+      <HintPath>..\packages\DryIoc.WebApi.dll.2.0.0-preview256\lib\net45\DryIoc.WebApi.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
@@ -85,14 +84,18 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Domain\Logger.cs" />
+    <Compile Include="Domain\ILogger.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Controllers\ProductsController.cs" />
-    <Compile Include="ProductRepository.cs" />
+    <Compile Include="Domain\IProductRepository.cs" />
+    <Compile Include="Domain\Product.cs" />
+    <Compile Include="Domain\FakeProductRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Properties\InternalsVisibleToDryIocFactoryCompilerDynamicAssembly.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Properties\InternalsVisibleToDryIocFactoryCompilerDynamicAssembly.cs" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
