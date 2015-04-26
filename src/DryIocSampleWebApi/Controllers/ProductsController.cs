@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Web.Http;
 using DryIocSampleWebApi.Domain;
 
@@ -11,6 +12,8 @@ namespace DryIocSampleWebApi.Controllers
 
         public ProductsController(ILogger logger, IProductRepository productRepository)
         {
+            Debug.WriteLine(GetType().Name + " ctor");
+
             if (logger == null)
             {
                 throw new ArgumentNullException("logger");
@@ -27,7 +30,7 @@ namespace DryIocSampleWebApi.Controllers
 
         public IHttpActionResult Get()
         {
-            _logger.Debug("Get() called");
+            _logger.Log("Get() called");
 
             var products = _productRepository.GetAll();
 
@@ -36,7 +39,7 @@ namespace DryIocSampleWebApi.Controllers
 
         public IHttpActionResult Get(int id)
         {
-            _logger.Debug("Get(int id) called");
+            _logger.Log("Get(int id) called");
 
             var found = _productRepository.GetById(id);
 

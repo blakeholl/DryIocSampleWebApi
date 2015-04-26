@@ -38,11 +38,13 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DryIoc">
-      <HintPath>..\packages\DryIoc.dll.2.0.0-preview256\lib\net45\DryIoc.dll</HintPath>
+    <Reference Include="DryIoc, Version=2.0.0.259, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\DryIoc.dll.2.0.0-rc1build259\lib\net45\DryIoc.dll</HintPath>
     </Reference>
-    <Reference Include="DryIoc.WebApi">
-      <HintPath>..\packages\DryIoc.WebApi.dll.2.0.0-preview256\lib\net45\DryIoc.WebApi.dll</HintPath>
+    <Reference Include="DryIoc.WebApi, Version=2.0.0.259, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\DryIoc.WebApi.dll.2.0.0-rc1build259\lib\net45\DryIoc.WebApi.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">

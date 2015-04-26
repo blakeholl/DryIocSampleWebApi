@@ -4,11 +4,7 @@ using System.Web;
 using System.Web.Http;
 using DryIoc;
 using DryIoc.WebApi;
-using DryIocSampleWebApi.Controllers;
 using DryIocSampleWebApi.Domain;
-
-using Reuse = DryIoc.Reuse;
-using WebReuse = DryIoc.WebApi.Reuse;
 
 namespace DryIocSampleWebApi
 {
@@ -20,13 +16,11 @@ namespace DryIocSampleWebApi
 
             IContainer container = new Container();
 
-            container.Register<IProductRepository, FakeProductRepository>(WebReuse.InRequest);
+            container.Register<IProductRepository, FakeProductRepository>(Reuse.InWebRequest);
 
             container.RegisterDelegate<ILogger>(
                 resolver => new Logger(s => Debug.WriteLine(s)),
                 Reuse.Singleton);
-
-            container.Register<ProductsController>(WebReuse.InRequest);
 
             container.WithWebApi(GlobalConfiguration.Configuration);
         }

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 
 namespace DryIocSampleWebApi.Domain
@@ -10,6 +11,11 @@ namespace DryIocSampleWebApi.Domain
             new Product {Id = 1, Name = "Bubblegum"},
             new Product {Id = 2, Name = "Candy"}
         };
+
+        public FakeProductRepository()
+        {
+            Debug.WriteLine(GetType().Name + " ctor");
+        }
 
         public IEnumerable<Product> GetAll()
         {

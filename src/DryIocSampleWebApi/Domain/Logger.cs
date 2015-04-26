@@ -9,6 +9,8 @@ namespace DryIocSampleWebApi.Domain
 
         public Logger(Action<string> loggerAction)
         {
+            Debug.WriteLine(GetType().Name + " ctor");
+
             if (loggerAction == null)
             {
                 throw new ArgumentNullException("loggerAction");
@@ -17,7 +19,7 @@ namespace DryIocSampleWebApi.Domain
             _loggerAction = loggerAction;
         }
 
-        public void Debug(string message)
+        public void Log(string message)
         {
             _loggerAction(message);
         }
